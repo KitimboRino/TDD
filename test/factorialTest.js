@@ -1,27 +1,48 @@
 /* eslint-disable no-undef */
 
 /* --------------------- Test last ---------------------- */
-// Requiring Chai
+// Importing Chai library
 const chai = require('chai');
 
 const { assert } = chai;
 
+// Importing factorial function.
 const factorial = require('../factorial');
 
 describe('factorial', () => {
   //  Last check for Factorial function.
-  it('Check if 3! returns 6 ', () => {
-    const result = factorial(3);
-    assert.equal(result, 6, 'Test is corect');
+  it('Check factorial(0) returns 1 ', () => {
+    const result = factorial(0);
+    assert.equal(result, 1);
   });
 
-  /* Exceptions */
-  //  Checking if the ! of the number is a boolean
-  it('Check number is not boolean', () => {
-    const isNumber = 'true';
-    const isNotNUmber = 'false';
+  it('Check factorial(1) returns 1 ', () => {
+    const result = factorial(1);
+    assert.equal(result, 1);
+  });
 
-    assert.isNotBoolean(isNumber, 'This is a number');
-    assert.isNotBoolean(isNotNUmber, 'Not a number');
+  it('Check factorial(3) returns 6 ', () => {
+    const result = factorial(3);
+    assert.equal(result, 6);
+  });
+
+  it('Check factorial(5) returns 120 ', () => {
+    const result = factorial(5);
+    assert.equal(result, 120);
+  });
+});
+
+/* Exceptions */
+// Negative value of num.
+describe('Negative num should throw an exception.', () => {
+  it('Exception', () => {
+    assert.throws(factorial(-1), Error);
+  });
+});
+
+// Decmal value of num.
+describe('Decimal num should throw an exception.', () => {
+  it('Exception', () => {
+    assert.throws(factorial(3.5), Error);
   });
 });
